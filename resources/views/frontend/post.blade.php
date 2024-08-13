@@ -1,15 +1,25 @@
 <x-frontend-layout>
     <section>
         <div class="container m-auto grid grid-cols-4 py-10 gap-5">
-            <div class="col-span-3 border">
+            <div class="col-span-3 border p-2">
                 <img src="{{ asset($post->image) }}" alt="">
                 <h1 class="my-2 font-bold px-4">{{ $post->title }}</h1>
-                <div class="px-2 my-2 mx-2 hover:bg-indigo-50">
+                <div class="px-2 my-2 mx-2  hover:bg-indigo-50">
                     {!! $post->description !!}
                 </div>
             </div>
             <div class="col-span-1 border">
-
+                <div class="container">
+                    <div class="row">
+                        @foreach ($ads as $ad)
+                        <div class="col-md-12 py-3">
+                            <a href="{{$ad->redirect_to}}">
+                                <img src="{{asset($ad->image)}}" alt="">
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
             <div class="container m-auto">
                 <h5 class="font-bold">Comments</h5>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\AdverController;
+use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -40,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('category',CategoryController::class)->names('category');
     Route::resource('/admin/post',PostController::class)->names('post');
+    Route::resource('/admin/advertisement',AdvertisementController::class)->names(['advertisement']);
 });
 
 require __DIR__.'/auth.php';

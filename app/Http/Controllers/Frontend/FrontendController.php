@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
+use App\Notifications\EmailNotification;
 use Faker\Provider\Base;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class FrontendController extends BaseController
 {
@@ -50,6 +53,13 @@ class FrontendController extends BaseController
         $comment->comment = $request->comment;
         $comment->post_id = $request->post_id;
         $comment->save();
+        $user = User::first();
+        $data =[
+            'email'=> $request->email,
+            'name'=>$request->name,
+            'comment'=>$request->comment
+        ];
+        Notification::send($user,new EmailNotification($data));
         return redirect()->back();
 
     }

@@ -20,6 +20,10 @@
               <li class="dropdown">
                 <a href="{{route('post.index')}}" class="nav-link"><i data-feather="file"></i><span>Post</span></a>
               </li>
+              <li class="dropdown">
+                <a href="{{route('advertisement.index')}}" class="nav-link"><i data-feather="file"></i><span>Advertisement</span></a>
+              </li>
+
 
           </ul>
         </aside>
